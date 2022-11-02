@@ -30,7 +30,9 @@ function runSolutions(sourceCount) {
       syncLogSources.push(new LogSource());
     }
     try {
-      require("./solution/sync-sorted-merge")(syncLogSources, new Printer());
+      //require("./solution/sync-sorted-merge")(syncLogSources, new Printer());
+      //require("./solution/sync-sorted-merge-simple")(syncLogSources, new Printer());
+      //require("./solution/sync-sorted-merge-heap")(syncLogSources, new Printer());
       resolve();
     } catch (e) {
       reject(e);
@@ -62,4 +64,4 @@ function runSolutions(sourceCount) {
 }
 
 // Adjust this input to see how your solutions perform under various loads.
-runSolutions(100);
+runSolutions(10);

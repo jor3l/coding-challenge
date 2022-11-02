@@ -12,20 +12,12 @@ module.exports = (logSources, printer) => {
   // this is a starting point of logs, then we print the zero log out, fetch the next log
   // and add it back to the array to sort it for the next iteration.
 
-  
+  let set = getSet();
   while(set.length > 0) {
     const {log} = set.shift();
     printer.print(log.last);
 
-    let next = log.pop();
-
-    // This exhaust current logSource until we reach the next in line log event
-    // note: a tiny improvement because less splices are called on the set array.
-    while(next && next.date.getTime() < set[0].time) {
-      printer.print(next);
-      next = log.pop();
-    }
-
+    const next = log.pop();
     if(next) {
       const time = next.date.getTime();
 
